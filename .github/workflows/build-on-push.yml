@@ -168,7 +168,7 @@ jobs:
                 retention-days: 7
 
         -   name: Show Postgres container logs
-            run: docker logs --tail=100 alf_sccio-db-1 || echo "No Postgres stdout logs yet"
+            run: docker logs --tail=100 alf_io-db-1 || echo "No Postgres stdout logs yet"
         
         -   name: Dump Postgres log file
             run: |
