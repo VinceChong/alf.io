@@ -146,7 +146,7 @@ jobs:
         -   name: Wait for Alf.io to be ready
             run: |
                 for i in {1..30}; do
-                    if docker exec alfio-app sh -c 'nc -z localhost 8080'; then
+                    if docker exec alfio-alfio-1 sh -c 'nc -z localhost 8080'; then
                         echo "Alf.io is up!"
                         exit 0
                     fi
@@ -158,7 +158,7 @@ jobs:
         -   name: Collect logs
             run: |
                 mkdir -p alfio-logs
-                docker logs alfio-app > alfio-logs/stdout.log 2>&1
+                docker logs alfio-alfio-1 > alfio-logs/stdout.log 2>&1
                 
         -   name: Upload logs
             uses: actions/upload-artifact@v4
@@ -168,12 +168,12 @@ jobs:
                 retention-days: 7
 
         -   name: Show Postgres container logs
-            run: docker logs --tail=100 alf_io-db-1 || echo "No Postgres stdout logs yet"
+            run: docker logs --tail=100 alfio-db-1 || echo "No Postgres stdout logs yet"
         
         -   name: Dump Postgres log file
             run: |
                 mkdir -p postgres-logs
-                docker logs alf_io-db-1 > postgres-logs/stdout.log 2>&1
+                docker logs alfio-db-1 > postgres-logs/stdout.log 2>&1
         
         -   name: Upload Postgres logs as artifact
             uses: actions/upload-artifact@v4
