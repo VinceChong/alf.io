@@ -32,6 +32,8 @@ public class NameNormalizer {
     private static String replaceCharIfNotSupported(char in) {
         if (in == 'Σ') {
             return "σς";
+        } else if (in == 'ß') {
+            return "ss";
         }
         char lowercase = Character.toLowerCase(in);
         if (lowercase == 'ı') {
