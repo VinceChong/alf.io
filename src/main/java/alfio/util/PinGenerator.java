@@ -50,7 +50,7 @@ public class PinGenerator {
     }
 
     public static String pinToPartialUuid(String pin, int pinLength) {
-        Assert.isTrue(isPinValid(pin, pinLength), "the given PIN is not valid");
+        Assert.isTrue(isPinValid(pin, pinLength), "the given PIN is invalid");
         var uppercasePin = Objects.requireNonNull(pin).strip().toUpperCase();
         var base = BigInteger.valueOf(ALLOWED_CHARS.length());
         var num = BigInteger.ZERO;
